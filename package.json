@@ -1,0 +1,25 @@
+{
+  "name": "home_broker_cripto",
+  "version": "1.0.0",
+  "description": "Home broker cripto",
+  "main": "index.js",
+  "scripts": {
+    "start": "node -r dotenv/config index",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/GabrielMBoeira/home_broker_cripto.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/GabrielMBoeira/home_broker_cripto/issues"
+  },
+  "homepage": "https://github.com/GabrielMBoeira/home_broker_cripto#readme",
+  "dependencies": {
+    "axios": "^0.27.2",
+    "dotenv-safe": "^8.2.0"
+  }
+}
