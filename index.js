@@ -16,12 +16,12 @@ setInterval(async () => {
     mercado.asks ? sell = parseInt(mercado.asks[0][0]) : asks = 0;
 
     console.log('*-*-*-*-*-*-*-*-*-*-*-*-*');
-    console.log(`Preço ask (sell): ${sell}`);
+    console.log(`Preco ask (sell): ${sell}`);
     console.log('*-*-*-*-*-*-*-*-*-*-*-*-*');
 
 
     //--COMPRAR  
-    if (sell < 400.40) {
+    if (sell && sell < 400.40) {
 
         console.log('Consultar carteira - Bom de comprar');
         const carteira = await api.accountInfo();
@@ -39,18 +39,19 @@ setInterval(async () => {
 
         if (sell <= totalCoin) {
             //--Ordem de compra: console.log(await api.newOrder(symbol, 1)) //situação geral da operação
-            const buyOrder = await api.newOrder(symbol, 1)
-            console.log(`orderId: ${buyOrder.orderId}`)
-            console.log(`status: ${buyOrder.status}`)
+            // const buyOrder = await api.newOrder(symbol, 1)
+            // console.log(`orderId: ${buyOrder.orderId}`)
+            // console.log(`status: ${buyOrder.status}`)
 
 
             //--POSICIONANDO VENDA
             console.log('Posicionando venda futura!!!');
-            const price = parseInt(sell * profitability);
-            console.log(`Vendendo por ${price} (${profitability})`)
-            const sellOrder = await api.newOrder(symbol, 1, price, 'SELL', 'LIMIT');
-            console.log(`orderId: ${sellOrder.orderId}`)
-            console.log(`status: ${sellOrder.status}`)
+            const price = parseFloat(sell * profitability).toFixed(5);
+
+            console.log(`Vendendo por ${price} (${profitability})`);
+            const sellOrder = await api.newOrder(symbol, 1, price, 'SELL', 'MARKET');
+            console.log(`orderId: ${sellOrder.orderId}`);
+            console.log(`status: ${sellOrder.status}`);
         }
 
         console.log('----------------Resultado da carteira----------------');
@@ -58,7 +59,7 @@ setInterval(async () => {
         console.log('-----------------------------------------------------');
 
         //--VENDER
-    } else if (buy > 1000) {
+    } else if (buy && buy > 1000) {
         console.log('Bom para vender');
 
         //--AGUARDANDO MERCADO
