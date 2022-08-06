@@ -16,7 +16,7 @@ setInterval(async () => {
     mercado.asks ? sell = parseInt(mercado.asks[0][0]) : asks = 0;
 
     console.log('*-*-*-*-*-*-*-*-*-*-*-*-*');
-    console.log(sell);
+    console.log(`Preço ask (sell): ${sell}`);
     console.log('*-*-*-*-*-*-*-*-*-*-*-*-*');
 
 
@@ -35,22 +35,22 @@ setInterval(async () => {
         ////--POSICIONANDO COMPRA
         console.log('Verificando se tenho grana...');
         const totalCoin = parseInt(coins.find(c => c.asset === 'BUSD').free);
-        console.log(`Total Coin:  ${totalCoin}}`);
+        console.log(`Total Coin:  ${totalCoin}`);
 
         if (sell <= totalCoin) {
-            // //--Ordem de compra: console.log(await api.newOrder(symbol, 1)) //situação geral da operação
-            // const buyOrder = await api.newOrder(symbol, 1)
-            // console.log(`orderId: ${buyOrder.orderId}`)
-            // console.log(`status: ${buyOrder.status}`)
+            //--Ordem de compra: console.log(await api.newOrder(symbol, 1)) //situação geral da operação
+            const buyOrder = await api.newOrder(symbol, 1)
+            console.log(`orderId: ${buyOrder.orderId}`)
+            console.log(`status: ${buyOrder.status}`)
 
 
-            ////--POSICIONANDO VENDA
-            // console.log('Posicionando venda futura!!!');
-            // const price = parseInt(sell * profitability);
-            // console.log(`Vendendo por ${price} (${profitability})`)
-            // const sellOrder = await api.newOrder(symbol, 1, price, 'SELL', 'MARKET');
-            // console.log(`orderId: ${sellOrder.orderId}`)
-            // console.log(`status: ${sellOrder.status}`)
+            //--POSICIONANDO VENDA
+            console.log('Posicionando venda futura!!!');
+            const price = parseInt(sell * profitability);
+            console.log(`Vendendo por ${price} (${profitability})`)
+            const sellOrder = await api.newOrder(symbol, 1, price, 'SELL', 'LIMIT');
+            console.log(`orderId: ${sellOrder.orderId}`)
+            console.log(`status: ${sellOrder.status}`)
         }
 
         console.log('----------------Resultado da carteira----------------');
