@@ -5,23 +5,23 @@ const profitability = parseFloat(process.env.PROFITABILITY);
 console.log('Iniciando monitoramento!');
 setInterval(async () => {
 
-    let buy = 0, sell = 0;
+    let buy = 0, sellPrice = 0;
 
     console.log('Mercado');
     const mercado = await api.depth('BNBBUSD');
     console.log(mercado.bids.length ? `Compra (Maior bids): ${mercado.bids[0][0]}` : 'Sem Compras'); //Maior preço de compras
     console.log(mercado.asks.length ? `Venda (Menor asks): ${mercado.asks[0][0]}` : 'Sem Vendas'); //Menor preço de vendas
 
-    mercado.bids ? buy = parseInt(mercado.bids[0][0]) : buy = 0;
-    mercado.asks ? sell = parseInt(mercado.asks[0][0]) : asks = 0;
+    mercado.bids ? buy = parseFloat(mercado.bids[0][0]) : buy = 0;
+    mercado.asks ? sellPrice = parseFloat(mercado.asks[0][0]) : asks = 0;
 
     console.log('*-*-*-*-*-*-*-*-*-*-*-*-*');
-    console.log(`Preco ask (sell): ${sell}`);
+    console.log(`Preco ask (sellPrice): ${sellPrice}`);
     console.log('*-*-*-*-*-*-*-*-*-*-*-*-*');
 
 
     //--COMPRAR  
-    if (sell && sell < 400.40) {
+    if (sellPrice && sellPrice < 400.40) {
 
         console.log('Consultar carteira - Bom de comprar');
         const carteira = await api.accountInfo();
@@ -34,24 +34,26 @@ setInterval(async () => {
 
         ////--POSICIONANDO COMPRA
         console.log('Verificando se tenho grana...');
-        const totalCoin = parseInt(coins.find(c => c.asset === 'BUSD').free);
-        console.log(`Total Coin:  ${totalCoin}`);
+        const walletCoin = parseFloat(coins.find(c => c.asset === 'BUSD').free).toFixed(5);
+        const qty = parseFloat((walletCoin / sellPrice) - 0.00001).toFixed(5); //Cálculo para dividir quantity em fação.
+        console.log(`Qty: ${qty}`);
+        console.log(`Total Coin:  ${walletCoin}`);
 
-        if (sell <= totalCoin) {
+        if (qty > 0) {
             //--Ordem de compra: console.log(await api.newOrder(symbol, 1)) //situação geral da operação
-            // const buyOrder = await api.newOrder(symbol, 1)
+            // const buyOrder = await api.newOrder(symbol, qty)
             // console.log(`orderId: ${buyOrder.orderId}`)
             // console.log(`status: ${buyOrder.status}`)
 
 
             //--POSICIONANDO VENDA
-            console.log('Posicionando venda futura!!!');
-            const price = parseFloat(sell * profitability).toFixed(5);
+            // console.log('Posicionando venda futura!!!');
+            // const price = parseFloat(sellPrice * profitability).toFixed(5);
 
-            console.log(`Vendendo por ${price} (${profitability})`);
-            const sellOrder = await api.newOrder(symbol, 1, price, 'SELL', 'MARKET');
-            console.log(`orderId: ${sellOrder.orderId}`);
-            console.log(`status: ${sellOrder.status}`);
+            // console.log(`Vendendo por ${price} (${profitability})`);
+            // const sellOrder = await api.newOrder(symbol, qty, price, 'SELL', 'MARKET');
+            // console.log(`orderId: ${sellOrder.orderId}`);
+            // console.log(`status: ${sellOrder.status}`);
         }
 
         console.log('----------------Resultado da carteira----------------');
