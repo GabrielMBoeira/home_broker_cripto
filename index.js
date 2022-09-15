@@ -9,8 +9,8 @@ setInterval(async () => {
 
     console.log('Mercado');
     const mercado = await api.depth('BNBBUSD');
-    console.log(mercado.bids.length ? `Compra (Maior bids): ${mercado.bids[0][0]}` : 'Sem Compras'); //Maior preço de compras
-    console.log(mercado.asks.length ? `Venda (Menor asks): ${mercado.asks[0][0]}` : 'Sem Vendas'); //Menor preço de vendas
+    console.log(mercado.bids.length ? `Compra (Maior bids): ${mercado.bids[0][0]}` : 'Sem Compras'); //Maior preï¿½o de compras
+    console.log(mercado.asks.length ? `Venda (Menor asks): ${mercado.asks[0][0]}` : 'Sem Vendas'); //Menor preï¿½o de vendas
 
     mercado.bids ? buy = parseFloat(mercado.bids[0][0]) : buy = 0;
     mercado.asks ? sellPrice = parseFloat(mercado.asks[0][0]) : asks = 0;
@@ -35,12 +35,12 @@ setInterval(async () => {
         ////--POSICIONANDO COMPRA
         console.log('Verificando se tenho grana...');
         const walletCoin = parseFloat(coins.find(c => c.asset === 'BUSD').free).toFixed(5);
-        const qty = parseFloat((walletCoin / sellPrice) - 0.00001).toFixed(5); //Cálculo para dividir quantity em fação.
+        const qty = parseFloat((walletCoin / sellPrice) - 0.00001).toFixed(5); //Cï¿½lculo para dividir quantity em faï¿½ï¿½o.
         console.log(`Qty: ${qty}`);
         console.log(`Total Coin:  ${walletCoin}`);
 
         if (qty > 0) {
-            //--Ordem de compra: console.log(await api.newOrder(symbol, 1)) //situação geral da operação
+            //--Ordem de compra: console.log(await api.newOrder(symbol, 1)) //situaï¿½ï¿½o geral da operaï¿½ï¿½o
             // const buyOrder = await api.newOrder(symbol, qty)
             // console.log(`orderId: ${buyOrder.orderId}`)
             // console.log(`status: ${buyOrder.status}`)

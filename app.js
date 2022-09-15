@@ -1,11 +1,16 @@
 const express = require('express');
+const puppeteer = require('puppeteer');
 const api = require('./api');
-const app = express();
 const path = require('path');
+const cors = require('cors');
+const { render } = require('ejs');
+
+const app = express();
 const profitability = process.env.PROFITABILITY;
 const symbol = process.env.SYMBOL;
 const interval = process.env.CRAWLER_INTERVAL;
 
+app.use(cors());
 app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'ejs');
 
@@ -15,7 +20,7 @@ app.use('/data', async (req, res) => {
 
     const data = {};
 
-    const mercado = await api.depth(symbol);    
+    const mercado = await api.depth(symbol);
     data.buy = mercado.bids.length ? mercado.bids[0][0] : 0;
     data.sell = mercado.asks.length ? mercado.asks[0][0] : 0;
 
@@ -26,14 +31,14 @@ app.use('/data', async (req, res) => {
     const sellPrice = parseFloat(data.sell);
 
     //-----------------------//
-    //Lógica do bot - INÍCIO //
+    //LÃ³gica do bot - INÃ­CIO //
     //-----------------------//
 
     ////--POSICIONANDO COMPRA
     console.log('Verificando se tenho grana...');
     //--COMPRAR  
     if (sellPrice && sellPrice < 400.40) {
-        
+
         console.log('Consultar carteira - Bom de comprar');
         const carteira = await api.accountInfo();
         const coins = carteira.balances;
@@ -41,23 +46,23 @@ app.use('/data', async (req, res) => {
         // console.log('----------------Resultado da carteira----------------');
         // console.log(coins);
         // console.log('-----------------------------------------------------');
-        
-        
+
+
         ////--POSICIONANDO COMPRA
         console.log('Verificando se tenho grana...');
-        // --const walletCoin = parseFloat(coins.find(c => c.asset.endsWith('USD')).free); // Em produção poderá dar diferença devido a nomes das moedas.
+        // --const walletCoin = parseFloat(coins.find(c => c.asset.endsWith('USD')).free); // Em produï¿½ï¿½o poderï¿½ dar diferenï¿½a devido a nomes das moedas.
         const walletCoin = parseFloat(coins.find(c => c.asset === 'BUSD').free).toFixed(5);
-        // const qty = parseFloat((walletCoin / sellPrice) - 0.00001).toFixed(5); //Cálculo para dividir quantity em fação.
+        // const qty = parseFloat((walletCoin / sellPrice) - 0.00001).toFixed(5); //Cï¿½lculo para dividir quantity em faï¿½ï¿½o.
         const qty = 1 //TESTE
         console.log(`Qty: ${qty}`);
         console.log(`Total Coin:  ${walletCoin}`);
 
         if (qty > 0) {
-            //--Ordem de compra: console.log(await api.newOrder(symbol, 1)) //situação geral da operação
-            const buyOrder = await api.newOrder(symbol, qty);
-            data.buyOrder = buyOrder;   
-            console.log(`orderId: ${buyOrder.orderId}`);
-            console.log(`status: ${buyOrder.status}`);
+            //--Ordem de compra: console.log(await api.newOrder(symbol, 1)) //situaï¿½ï¿½o geral da operaï¿½ï¿½o
+            // const buyOrder = await api.newOrder(symbol, qty);
+            // data.buyOrder = buyOrder;
+            // console.log(`orderId: ${buyOrder.orderId}`);
+            // console.log(`status: ${buyOrder.status}`);
 
 
             //--POSICIONANDO VENDA
@@ -65,10 +70,10 @@ app.use('/data', async (req, res) => {
             const price = parseFloat(sellPrice * profitability).toFixed(5);
 
             console.log(`Vendendo por ${price} (${profitability})`);
-            const sellOrder = await api.newOrder(symbol, qty, price, 'SELL', 'MARKET');
-            data.sellOrder = sellOrder;
-            console.log(`orderId: ${sellOrder.orderId}`);
-            console.log(`status: ${sellOrder.status}`);
+            // const sellOrder = await api.newOrder(symbol, qty, price, 'SELL', 'MARKET');
+            // data.sellOrder = sellOrder;
+            // console.log(`orderId: ${sellOrder.orderId}`);
+            // console.log(`status: ${sellOrder.status}`);
         }
 
         console.log('----------------Resultado da carteira----------------');
@@ -80,20 +85,28 @@ app.use('/data', async (req, res) => {
         console.log('Bom para vender');
 
         //--AGUARDANDO MERCADO
-    // } else {
+        // } else {
         console.log('Aguardando mercado');
     }
 
     //-----------------------//
-    //Lógica do bot - FIM //
+    //LÃ³gica do bot - FIM //
     //-----------------------//
 
     res.json(data);
 
 })
 
+
+app.use('/teste', (req, res) => {
+    res.render('teste');
+});
+
+app.use('/binance', (req, res) => {
+    res.render('binance');
+});
+
 app.use('/', (req, res) => {
-    console.log('Entrou');
     res.render('app', {
         symbol: symbol,
         profitability: profitability,

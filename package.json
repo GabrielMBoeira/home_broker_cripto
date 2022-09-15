@@ -5,7 +5,7 @@
   "main": "index.js",
   "scripts": {
     "start": "npx nodemon -r dotenv/config app",
-    "bot": "node -r dotenv/config index",
+    "bot": "node -r dotenv/config app",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {
@@ -21,8 +21,10 @@
   "homepage": "https://github.com/GabrielMBoeira/home_broker_cripto#readme",
   "dependencies": {
     "axios": "^0.27.2",
+    "cors": "^2.8.5",
     "dotenv": "^8.2.0",
     "ejs": "^3.1.8",
-    "express": "^4.18.1"
+    "express": "^4.18.1",
+    "puppeteer": "^16.2.0"
   }
 }
