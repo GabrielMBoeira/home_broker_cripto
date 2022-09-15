@@ -41,6 +41,50 @@
       'April',
       'May',
       'June',
+      'June',
+      'June',
+      'June',
+      'June',
+      'January',
+      'February',
+      'March',
+      'April',
+      'May',
+      'June',
+      'June',
+      'June',
+      'June',
+      'June',
+      'January',
+      'February',
+      'March',
+      'April',
+      'May',
+      'June',
+      'June',
+      'June',
+      'June',
+      'June',
+      'January',
+      'February',
+      'March',
+      'April',
+      'May',
+      'June',
+      'June',
+      'June',
+      'June',
+      'June',
+      'January',
+      'February',
+      'March',
+      'April',
+      'May',
+      'June',
+      'June',
+      'June',
+      'June',
+      'June',
     ];
 
     const data = {
@@ -49,21 +93,32 @@
         label: 'My First dataset',
         backgroundColor: 'rgb(255, 99, 132)',
         borderColor: 'rgb(255, 99, 132)',
-        data: [0, 10, 5, 2, 20, 30, 45],
+        data: [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 150, -150],
+        // fill: false,
+        // borderColor: 'rgb(75, 192, 192)',
+        // tension: 0.1
       }]
     };
 
     const config = {
       type: 'line',
       data: data,
-      options: {}
+      options: {
+        animation: false,
+        elements: {
+            point: {
+                radius: 0 // default to disabled in all datasets
+            }
+        },
+       
+
+      }
     };
 
     const myChart = new Chart(
       document.getElementById('myChart'),
       config
     );
-
 
     function randomNumber(min, max) {
       min = Math.ceil(min);
@@ -72,23 +127,61 @@
     }
 
     const updateData = function () {
-
-      myChart.data.datasets[0].data[0] = randomNumber(-100, 100)
-      myChart.data.datasets[0].data[1] = randomNumber(-100, 100)
-      myChart.data.datasets[0].data[2] = randomNumber(-100, 100)
-      myChart.data.datasets[0].data[3] = randomNumber(-100, 100)
-      myChart.data.datasets[0].data[4] = randomNumber(-100, 100)
-      myChart.data.datasets[0].data[5] = randomNumber(-100, 100)
-      myChart.data.datasets[0].data[6] = randomNumber(-100, 100)
-
+      myChart.data.datasets[0].data[0] = myChart.data.datasets[0].data[1]
+      myChart.data.datasets[0].data[1] = myChart.data.datasets[0].data[2]
+      myChart.data.datasets[0].data[2] = myChart.data.datasets[0].data[3]
+      myChart.data.datasets[0].data[3] = myChart.data.datasets[0].data[4]
+      myChart.data.datasets[0].data[4] = myChart.data.datasets[0].data[5]
+      myChart.data.datasets[0].data[5] = myChart.data.datasets[0].data[6]
+      myChart.data.datasets[0].data[6] = myChart.data.datasets[0].data[7]
+      myChart.data.datasets[0].data[7] = myChart.data.datasets[0].data[8]
+      myChart.data.datasets[0].data[8] = myChart.data.datasets[0].data[9]
+      myChart.data.datasets[0].data[9] = myChart.data.datasets[0].data[10]
+      myChart.data.datasets[0].data[10] = myChart.data.datasets[0].data[11]
+      myChart.data.datasets[0].data[11] = myChart.data.datasets[0].data[12]
+      myChart.data.datasets[0].data[12] = myChart.data.datasets[0].data[13]
+      myChart.data.datasets[0].data[13] = myChart.data.datasets[0].data[14]
+      myChart.data.datasets[0].data[14] = myChart.data.datasets[0].data[15]
+      myChart.data.datasets[0].data[15] = myChart.data.datasets[0].data[16]
+      myChart.data.datasets[0].data[16] = myChart.data.datasets[0].data[17]
+      myChart.data.datasets[0].data[17] = myChart.data.datasets[0].data[18]
+      myChart.data.datasets[0].data[18] = myChart.data.datasets[0].data[19]
+      myChart.data.datasets[0].data[19] = myChart.data.datasets[0].data[20]
+      myChart.data.datasets[0].data[20] = myChart.data.datasets[0].data[21]
+      myChart.data.datasets[0].data[21] = myChart.data.datasets[0].data[22]
+      myChart.data.datasets[0].data[22] = myChart.data.datasets[0].data[23]
+      myChart.data.datasets[0].data[23] = myChart.data.datasets[0].data[24]
+      myChart.data.datasets[0].data[24] = myChart.data.datasets[0].data[25]
+      myChart.data.datasets[0].data[25] = myChart.data.datasets[0].data[26]
+      myChart.data.datasets[0].data[26] = myChart.data.datasets[0].data[27]
+      myChart.data.datasets[0].data[27] = myChart.data.datasets[0].data[28]
+      myChart.data.datasets[0].data[28] = myChart.data.datasets[0].data[29]
+      myChart.data.datasets[0].data[29] = myChart.data.datasets[0].data[30]
+      myChart.data.datasets[0].data[30] = myChart.data.datasets[0].data[31]
+      myChart.data.datasets[0].data[31] = myChart.data.datasets[0].data[32]
+      myChart.data.datasets[0].data[32] = myChart.data.datasets[0].data[33]
+      myChart.data.datasets[0].data[33] = myChart.data.datasets[0].data[34]
+      myChart.data.datasets[0].data[34] = myChart.data.datasets[0].data[35]
+      myChart.data.datasets[0].data[35] = myChart.data.datasets[0].data[36]
+      myChart.data.datasets[0].data[36] = myChart.data.datasets[0].data[37]
+      myChart.data.datasets[0].data[37] = myChart.data.datasets[0].data[38]
+      myChart.data.datasets[0].data[38] = myChart.data.datasets[0].data[39]
+      myChart.data.datasets[0].data[39] = myChart.data.datasets[0].data[40]
+      myChart.data.datasets[0].data[40] = myChart.data.datasets[0].data[41]
+      myChart.data.datasets[0].data[41] = myChart.data.datasets[0].data[42]
+      myChart.data.datasets[0].data[42] = myChart.data.datasets[0].data[43]
+      myChart.data.datasets[0].data[43] = myChart.data.datasets[0].data[44]
+      myChart.data.datasets[0].data[44] = myChart.data.datasets[0].data[45]
+      myChart.data.datasets[0].data[45] = myChart.data.datasets[0].data[46]
+      myChart.data.datasets[0].data[46] = myChart.data.datasets[0].data[47]
+      myChart.data.datasets[0].data[47] = myChart.data.datasets[0].data[48]
+      myChart.data.datasets[0].data[48] = myChart.data.datasets[0].data[49]
+      myChart.data.datasets[0].data[49] = randomNumber(-100, 100)
     };
 
     setInterval(() => {
-
       updateData();
-      console.log(myChart.data.datasets[0].data[0])
       myChart.update();
-
     }, 2000)
 
   </script>
