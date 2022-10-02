@@ -93,9 +93,9 @@
         label: 'My First dataset',
         backgroundColor: 'rgb(255, 99, 132)',
         borderColor: 'rgb(255, 99, 132)',
-        data: [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 150, -150],
+        data: [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 2000, -2000],
         // fill: false,
-        // borderColor: 'rgb(75, 192, 192)',
+        // borderColor: 'rgb(0, 0, 0)',
         // tension: 0.1
       }]
     };
@@ -105,11 +105,11 @@
       data: data,
       options: {
         animation: false,
-        elements: {
-            point: {
-                radius: 0 // default to disabled in all datasets
-            }
-        },
+        // elements: {
+        //     point: {
+        //         radius: 0 // default to disabled in all datasets
+        //     }
+        // },
        
 
       }
@@ -176,13 +176,13 @@
       myChart.data.datasets[0].data[46] = myChart.data.datasets[0].data[47]
       myChart.data.datasets[0].data[47] = myChart.data.datasets[0].data[48]
       myChart.data.datasets[0].data[48] = myChart.data.datasets[0].data[49]
-      myChart.data.datasets[0].data[49] = randomNumber(-100, 100)
+      myChart.data.datasets[0].data[49] = randomNumber(-1000, 1000)
     };
 
     setInterval(() => {
       updateData();
       myChart.update();
-    }, 2000)
+    }, 1000)
 
   </script>
 
