@@ -2,195 +2,495 @@
 <html lang="pt-BR">
 
 <head>
-	<meta charset="utf-8">
-	<meta name="viewport" content="width=device-width, initial-scale=1">
+   <meta charset="utf-8">
+   <meta name="viewport" content="width=device-width, initial-scale=1">
 
-	<!-- ChartJS CDN -->
-	<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+   <!-- ChartJS CDN -->
+   <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 
-	<!-- Box Icons -->
-	<link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
+   <!-- Box Icons -->
+   <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
 
-	<!-- Bootstrap CSS -->
-	<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
-		integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+   <!-- ChartJS CDN -->
+   <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+   <script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
 
-	<link rel="stylesheet" href="css/app.css">
+   <!-- Bootstrap CSS -->
+   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
+      integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
 
-	<title>TraderSystem</title>
+   <link rel="stylesheet" href="css/app.css">
+
+   <title>TraderSystem</title>
 </head>
 
 <body>
-	<header class="header">
-		<nav class="navbar navbar-expand-lg navbar-light bg-light">
-			<div class="container-fluid">
-				<a class="navbar-brand" href="#">TraderSystem</a>
-				<button class="navbar-toggler" type="button" data-bs-toggle="collapse"
-					data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false"
-					aria-label="Toggle navigation">
-					<span class="navbar-toggler-icon"></span>
-				</button>
-				<div class="collapse navbar-collapse" id="navbarSupportedContent">
-					<ul class="navbar-nav me-auto mb-2 mb-lg-0">
-						<li class="nav-item">
-							<a class="nav-link active" aria-current="page" href="#">Home</a>
-						</li>
-						<li class="nav-item">
-							<a class="nav-link" href="#">Link</a>
-						</li>
-						<li class="nav-item dropdown">
-							<a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button"
-								data-bs-toggle="dropdown" aria-expanded="false">
-								Dropdown
-							</a>
-							<ul class="dropdown-menu" aria-labelledby="navbarDropdown">
-								<li><a class="dropdown-item" href="#">Action</a></li>
-								<li><a class="dropdown-item" href="#">Another action</a></li>
-								<li>
-									<hr class="dropdown-divider">
-								</li>
-								<li><a class="dropdown-item" href="#">Something else here</a></li>
-							</ul>
-						</li>
-						<li class="nav-item">
-							<a class="nav-link disabled" href="#" tabindex="-1" aria-disabled="true">Disabled</a>
-						</li>
-					</ul>
-					<form class="d-flex">
-						<input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
-						<button class="btn btn-outline-success" type="submit">Search</button>
-					</form>
-				</div>
-			</div>
-		</nav>
-	</header>
 
-	<main class="main">
-		<aside class="sidebar">
-			<div class="logoContent">
-				<div class="logo d-flex justify-content-center">
-					<i class="bx bx-line-chart fs-1"></i>
-				</div>
-				<i class="bx bx-menu" id="btn"></i>
-			</div>
-			<ul class="nav_list">
-				<li>
-					<i class='bx bx-search'></i>
-					<input type="search" name="search" placeholder="Procurar...">
-					<span class="toolipe">Procurar</span>
-				</li>
-				<li>
-					<a href="#">
-						<i class='bx bx-grid-alt'></i>
-						<span class="links_name">Dashboard</span>
-						<span class="toolipe">Dashboard</span>
-					</a>
-				</li>
-				<li>
-					<a href="#">
-						<i class='bx bx-user'></i>
-						<span class="links_name">Usuário</span>
-						<span class="toolipe">Usuário</span>
-					</a>
-				</li>
-				<li>
-					<a href="#">
-						<i class='bx bx-cog'></i>
-						<span class="links_name">Configurações</span>
-						<span class="toolipe">Configurações</span>
-					</a>
-				</li>
-				<li>
-					<a href="#">
-						<i class='bx bx-folder-open'></i>
-						<span class="links_name">Arquivos</span>
-						<span class="toolipe">Arquivos</span>
-					</a>
-				</li>
-				<li>
-					<a href="#">
-						<i class='bx bx-chat'></i>
-						<span class="links_name">Mensagens</span>
-						<span class="toolipe">Mensagens</span>
-					</a>
-				</li>
-				<li>
-					<a href="#">
-						<i class='bx bx-bar-chart'></i>
-						<span class="links_name">Relatórios</span>
-						<span class="toolipe">Relatórios</span>
-					</a>
-				</li>
-				<li>
-					<a href="#">
-						<i class='bx bx-bitcoin'></i>
-						<span class="links_name">Mercado</span>
-						<span class="toolipe">Mercado</span>
-					</a>
-				</li>
-			</ul>
+   <main class="main">
+      <aside class="sidebar">
+         <div class="logoContent">
+            <div class="logo d-flex justify-content-center">
+               <i class="bx bx-line-chart fs-1"></i>
+            </div>
+            <i class="bx bx-menu" id="btn"></i>
+         </div>
+         <ul class="nav_list">
+            <li>
+               <i class='bx bx-search'></i>
+               <input type="search" name="search" placeholder="Procurar...">
+               <span class="toolipe">Procurar</span>
+            </li>
+            <li>
+               <a href="#">
+                  <i class='bx bx-grid-alt'></i>
+                  <span class="links_name">Dashboard</span>
+                  <span class="toolipe">Dashboard</span>
+               </a>
+            </li>
+            <li>
+               <a href="#">
+                  <i class='bx bx-user'></i>
+                  <span class="links_name">Usuário</span>
+                  <span class="toolipe">Usuário</span>
+               </a>
+            </li>
+            <li>
+               <a href="#">
+                  <i class='bx bx-cog'></i>
+                  <span class="links_name">Configurações</span>
+                  <span class="toolipe">Configurações</span>
+               </a>
+            </li>
+            <li>
+               <a href="#">
+                  <i class='bx bx-folder-open'></i>
+                  <span class="links_name">Arquivos</span>
+                  <span class="toolipe">Arquivos</span>
+               </a>
+            </li>
+            <li>
+               <a href="#">
+                  <i class='bx bx-chat'></i>
+                  <span class="links_name">Mensagens</span>
+                  <span class="toolipe">Mensagens</span>
+               </a>
+            </li>
+            <li>
+               <a href="#">
+                  <i class='bx bx-bar-chart'></i>
+                  <span class="links_name">Relatórios</span>
+                  <span class="toolipe">Relatórios</span>
+               </a>
+            </li>
+            <li>
+               <a href="#">
+                  <i class='bx bx-bitcoin'></i>
+                  <span class="links_name">Mercado</span>
+                  <span class="toolipe">Mercado</span>
+               </a>
+            </li>
+         </ul>
 
-		</aside>
-		<div class="content-main">
-			<div style="margin-top: 30px; width: 100%;">
-				<div class="container">
-					<span class="title-main font-size:1.5rem;">Home Broker</span>
-					<div class="row">
-						<div class="col-lg-6 box-item">
-							<div class="card" style="width: 18rem;">
-								<div class="card-body">
-									<h5 class="card-title">Título do card</h5>
-									<h6 class="card-subtitle mb-2 text-muted">Subtitulo do card</h6>
-									<p class="card-text">Um exemplo de texto rápido para construir o título do card e fazer
-										preencher o conteúdo do card.</p>
-									<a href="#" class="card-link">Link do card</a>
-									<a href="#" class="card-link">Outro link</a>
-								</div>
-							</div>
-						</div>
-						<div class="col-lg-6 box-item">
-							<div class="card" style="width: 18rem;">
-								<div class="card-body">
-									<h5 class="card-title">Título do card</h5>
-									<h6 class="card-subtitle mb-2 text-muted">Subtitulo do card</h6>
-									<p class="card-text">Um exemplo de texto rápido para construir o título do card e fazer
-										preencher o conteúdo do card.</p>
-									<a href="#" class="card-link">Link do card</a>
-									<a href="#" class="card-link">Outro link</a>
-								</div>
-							</div>
-						</div>
-					</div>
-				</div>
+      </aside>
+      <div class="content-main">
+         <div style="margin-top: 30px; width: 100%;">
+            <div class="container-fluid">
+               <div class="title-main font-size:1.5rem;">
+                  Home Broker
+               </div>
+               <div class="row">
+                  <div class="col-lg-5 box-item">
+                     <div class="box-item-content-1">
+                        <div class="box-content-title">
+                           Cotações
+                        </div>
+                        <div class="status">
+                           Indices
+                        </div>
+                        <div class="graph">
+                           <canvas id="myChart" class="myChart"></canvas>
+                        </div>
+                        <div class="buttons-graph d-flex justify-content-end">
+                           <button class="btn btn-sm btn-success mx-1">Comprar</button>
+                           <button class="btn btn-sm btn-danger mx-1">Vender</button>
+                        </div>
+                     </div>
+                  </div>
+                  <div class="col-lg-5 box-item">
+                     <div class="box-item-content-1">
+                        <div class="status">
+                           Resultado
+                        </div>
+                        <div class="graph">
+                           Grafico
+                        </div>
+                     </div>
+                  </div>
+                  <div class="col-lg-5 box-item">
+                     <div class="box-item-content-3">
+                        <div class="card">
+                           <div class="card-body table-responsive p-0">
+                              <table class="table table-striped table-valign-middle">
+                                 <thead>
+                                    <tr>
+                                       <th>Product</th>
+                                       <th>Price</th>
+                                       <th>Sales</th>
+                                       <th>More</th>
+                                    </tr>
+                                 </thead>
+                                 <tbody>
+                                    <tr>
+                                       <td>
+                                          Some Product
+                                       </td>
+                                       <td>$13 USD</td>
+                                       <td>
+                                          <small class="text-success mr-1">
+                                             <i class="fas fa-arrow-up"></i>
+                                             12%
+                                          </small>
+                                          12,000 Sold
+                                       </td>
+                                       <td>
+                                          <a href="#" class="text-muted">
+                                             <i class="fas fa-search"></i>
+                                          </a>
+                                       </td>
+                                    </tr>
+                                    <tr>
+                                       <td>
+                                          Another Product
+                                       </td>
+                                       <td>$29 USD</td>
+                                       <td>
+                                          <small class="text-warning mr-1">
+                                             <i class="fas fa-arrow-down"></i>
+                                             0.5%
+                                          </small>
+                                          123,234 Sold
+                                       </td>
+                                       <td>
+                                          <a href="#" class="text-muted">
+                                             <i class="fas fa-search"></i>
+                                          </a>
+                                       </td>
+                                    </tr>
+                                    <tr>
+                                       <td>
+                                          Amazing Product
+                                       </td>
+                                       <td>$1,230 USD</td>
+                                       <td>
+                                          <small class="text-danger mr-1">
+                                             <i class="fas fa-arrow-down"></i>
+                                             3%
+                                          </small>
+                                          198 Sold
+                                       </td>
+                                       <td>
+                                          <a href="#" class="text-muted">
+                                             <i class="fas fa-search"></i>
+                                          </a>
+                                       </td>
+                                    </tr>
+                                    <tr>
+                                       <td>
+                                          Perfect Item
+                                          <span class="badge bg-danger">NEW</span>
+                                       </td>
+                                       <td>$199 USD</td>
+                                       <td>
+                                          <small class="text-success mr-1">
+                                             <i class="fas fa-arrow-up"></i>
+                                             63%
+                                          </small>
+                                          87 Sold
+                                       </td>
+                                       <td>
+                                          <a href="#" class="text-muted">
+                                             <i class="fas fa-search"></i>
+                                          </a>
+                                       </td>
+                                    </tr>
+                                 </tbody>
+                              </table>
+                           </div>
+                        </div>
+                     </div>
+                  </div>
+                  <div class="col-lg-5 box-item">
+                     <div class="box-item-content-4">
+                        <div class="card">
+                           <div class="card-body table-responsive p-0">
+                              <table class="table table-striped table-valign-middle">
+                                 <thead>
+                                    <tr>
+                                       <th>Product</th>
+                                       <th>Price</th>
+                                       <th>Sales</th>
+                                       <th>More</th>
+                                    </tr>
+                                 </thead>
+                                 <tbody>
+                                    <tr>
+                                       <td>
+                                          Some Product
+                                       </td>
+                                       <td>$13 USD</td>
+                                       <td>
+                                          <small class="text-success mr-1">
+                                             <i class="fas fa-arrow-up"></i>
+                                             12%
+                                          </small>
+                                          12,000 Sold
+                                       </td>
+                                       <td>
+                                          <a href="#" class="text-muted">
+                                             <i class="fas fa-search"></i>
+                                          </a>
+                                       </td>
+                                    </tr>
+                                    <tr>
+                                       <td>
+                                          Another Product
+                                       </td>
+                                       <td>$29 USD</td>
+                                       <td>
+                                          <small class="text-warning mr-1">
+                                             <i class="fas fa-arrow-down"></i>
+                                             0.5%
+                                          </small>
+                                          123,234 Sold
+                                       </td>
+                                       <td>
+                                          <a href="#" class="text-muted">
+                                             <i class="fas fa-search"></i>
+                                          </a>
+                                       </td>
+                                    </tr>
+                                    <tr>
+                                       <td>
+                                          Amazing Product
+                                       </td>
+                                       <td>$1,230 USD</td>
+                                       <td>
+                                          <small class="text-danger mr-1">
+                                             <i class="fas fa-arrow-down"></i>
+                                             3%
+                                          </small>
+                                          198 Sold
+                                       </td>
+                                       <td>
+                                          <a href="#" class="text-muted">
+                                             <i class="fas fa-search"></i>
+                                          </a>
+                                       </td>
+                                    </tr>
+                                    <tr>
+                                       <td>
+                                          Perfect Item
+                                          <span class="badge bg-danger">NEW</span>
+                                       </td>
+                                       <td>$199 USD</td>
+                                       <td>
+                                          <small class="text-success mr-1">
+                                             <i class="fas fa-arrow-up"></i>
+                                             63%
+                                          </small>
+                                          87 Sold
+                                       </td>
+                                       <td>
+                                          <a href="#" class="text-muted">
+                                             <i class="fas fa-search"></i>
+                                          </a>
+                                       </td>
+                                    </tr>
+                                 </tbody>
+                              </table>
+                           </div>
+                        </div>
+                     </div>
+                  </div>
+               </div>
+            </div>
+         </div>
+      </div>
 
-			</div>
-		</div>
+   </main>
+
+   <footer class="footer">
+      <span class="content-footer">Desenvolvido por Gabriel M. Boeira</span>
+   </footer>
 
 
-	</main>
+   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
+      integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM"
+      crossorigin="anonymous"></script>
 
-	<footer class="footer">
-		Footer
-	</footer>
+   <script>
+      const btn = document.querySelector('#btn');
+      const bxSearch = document.querySelector('.bx-search');
+      const sidebar = document.querySelector('.sidebar');
+
+      btn.addEventListener('click', () => {
+         sidebar.classList.toggle('active');
+      });
+
+      bxSearch.addEventListener('click', () => {
+         sidebar.classList.toggle('active');
+      });
 
 
-	<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
-		integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM"
-		crossorigin="anonymous"></script>
+      //ChartJS
+      const labels = [
+         'January',
+         'February',
+         'March',
+         'April',
+         'May',
+         'June',
+         'June',
+         'June',
+         'June',
+         'June',
+         'January',
+         'February',
+         'March',
+         'April',
+         'May',
+         'June',
+         'June',
+         'June',
+         'June',
+         'June',
+         'January',
+         'February',
+         'March',
+         'April',
+         'May',
+         'June',
+         'June',
+         'June',
+         'June',
+         'June',
+         'January',
+         'February',
+         'March',
+         'April',
+         'May',
+         'June',
+         'June',
+         'June',
+         'June',
+         'June',
+         'January',
+         'February',
+         'March',
+         'April',
+         'May',
+         'June',
+         'June',
+         'June',
+         'June',
+         'June',
+      ];
 
-	<script>
-		const btn = document.querySelector('#btn');
-		const bxSearch = document.querySelector('.bx-search');
-		const sidebar = document.querySelector('.sidebar');
+      const data = {
+         labels: labels,
+         datasets: [{
+            label: 'My First dataset',
+            backgroundColor: 'rgb(255, 99, 132)',
+            borderColor: 'rgb(255, 99, 132)',
+            data: [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 2000, -2000],
+            // fill: false,
+            // borderColor: 'rgb(0, 0, 0)',
+            // tension: 0.1
+         }]
+      };
 
-		btn.addEventListener('click', () => {
-			sidebar.classList.toggle('active');
-		});
+      const config = {
+         type: 'line',
+         data: data,
+         options: {
+            animation: false,
+            // elements: {
+            //     point: {
+            //         radius: 0 // default to disabled in all datasets
+            //     }
+            // },
+         }
+      };
 
-		bxSearch.addEventListener('click', () => {
-			sidebar.classList.toggle('active');
-		});
-	</script>
+      const myChart = new Chart(
+         document.getElementById('myChart'),
+         config
+      );
+
+      function randomNumber(min, max) {
+         min = Math.ceil(min);
+         max = Math.floor(max);
+         return Math.floor(Math.random() * (max - min + 1)) + min;
+      }
+
+      const updateData = function () {
+         myChart.data.datasets[0].data[0] = myChart.data.datasets[0].data[1]
+         myChart.data.datasets[0].data[1] = myChart.data.datasets[0].data[2]
+         myChart.data.datasets[0].data[2] = myChart.data.datasets[0].data[3]
+         myChart.data.datasets[0].data[3] = myChart.data.datasets[0].data[4]
+         myChart.data.datasets[0].data[4] = myChart.data.datasets[0].data[5]
+         myChart.data.datasets[0].data[5] = myChart.data.datasets[0].data[6]
+         myChart.data.datasets[0].data[6] = myChart.data.datasets[0].data[7]
+         myChart.data.datasets[0].data[7] = myChart.data.datasets[0].data[8]
+         myChart.data.datasets[0].data[8] = myChart.data.datasets[0].data[9]
+         myChart.data.datasets[0].data[9] = myChart.data.datasets[0].data[10]
+         myChart.data.datasets[0].data[10] = myChart.data.datasets[0].data[11]
+         myChart.data.datasets[0].data[11] = myChart.data.datasets[0].data[12]
+         myChart.data.datasets[0].data[12] = myChart.data.datasets[0].data[13]
+         myChart.data.datasets[0].data[13] = myChart.data.datasets[0].data[14]
+         myChart.data.datasets[0].data[14] = myChart.data.datasets[0].data[15]
+         myChart.data.datasets[0].data[15] = myChart.data.datasets[0].data[16]
+         myChart.data.datasets[0].data[16] = myChart.data.datasets[0].data[17]
+         myChart.data.datasets[0].data[17] = myChart.data.datasets[0].data[18]
+         myChart.data.datasets[0].data[18] = myChart.data.datasets[0].data[19]
+         myChart.data.datasets[0].data[19] = myChart.data.datasets[0].data[20]
+         myChart.data.datasets[0].data[20] = myChart.data.datasets[0].data[21]
+         myChart.data.datasets[0].data[21] = myChart.data.datasets[0].data[22]
+         myChart.data.datasets[0].data[22] = myChart.data.datasets[0].data[23]
+         myChart.data.datasets[0].data[23] = myChart.data.datasets[0].data[24]
+         myChart.data.datasets[0].data[24] = myChart.data.datasets[0].data[25]
+         myChart.data.datasets[0].data[25] = myChart.data.datasets[0].data[26]
+         myChart.data.datasets[0].data[26] = myChart.data.datasets[0].data[27]
+         myChart.data.datasets[0].data[27] = myChart.data.datasets[0].data[28]
+         myChart.data.datasets[0].data[28] = myChart.data.datasets[0].data[29]
+         myChart.data.datasets[0].data[29] = myChart.data.datasets[0].data[30]
+         myChart.data.datasets[0].data[30] = myChart.data.datasets[0].data[31]
+         myChart.data.datasets[0].data[31] = myChart.data.datasets[0].data[32]
+         myChart.data.datasets[0].data[32] = myChart.data.datasets[0].data[33]
+         myChart.data.datasets[0].data[33] = myChart.data.datasets[0].data[34]
+         myChart.data.datasets[0].data[34] = myChart.data.datasets[0].data[35]
+         myChart.data.datasets[0].data[35] = myChart.data.datasets[0].data[36]
+         myChart.data.datasets[0].data[36] = myChart.data.datasets[0].data[37]
+         myChart.data.datasets[0].data[37] = myChart.data.datasets[0].data[38]
+         myChart.data.datasets[0].data[38] = myChart.data.datasets[0].data[39]
+         myChart.data.datasets[0].data[39] = myChart.data.datasets[0].data[40]
+         myChart.data.datasets[0].data[40] = myChart.data.datasets[0].data[41]
+         myChart.data.datasets[0].data[41] = myChart.data.datasets[0].data[42]
+         myChart.data.datasets[0].data[42] = myChart.data.datasets[0].data[43]
+         myChart.data.datasets[0].data[43] = myChart.data.datasets[0].data[44]
+         myChart.data.datasets[0].data[44] = myChart.data.datasets[0].data[45]
+         myChart.data.datasets[0].data[45] = myChart.data.datasets[0].data[46]
+         myChart.data.datasets[0].data[46] = myChart.data.datasets[0].data[47]
+         myChart.data.datasets[0].data[47] = myChart.data.datasets[0].data[48]
+         myChart.data.datasets[0].data[48] = myChart.data.datasets[0].data[49]
+         myChart.data.datasets[0].data[49] = randomNumber(-1000, 1000)
+      };
+
+      setInterval(() => {
+         updateData();
+         myChart.update();
+      }, 1000)
+   </script>
 
 </body>
 
