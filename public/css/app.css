@@ -196,7 +196,6 @@ body {
     display: none;
 }
 
-
 /* Content-main */
 main.main {
     height: 100%;
@@ -223,25 +222,33 @@ main .box-item {
     box-shadow: 0px 0px 6px 0px rgba(0,0,0,0.75);
     display: flex;
     justify-content: center;
+    /* flex-direction: column; */
 }
 
 main .box-item-content-1 {
     background-color: #F4F6F9;
     height: 100%;
-    width: 100%;
+    width: 550px;
 }
 
-main .graph {
-    height: 200px;
+main .btn-graph {
+    width: 100px;
+    height: 40px;
+    margin: 2px;
+}
+
+main .buttons-graph {
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
+    margin-left: 5px;
 }
 
 main .myChart {
-    transform: scale(0.8);
-    background-color: aqua;
+    /* transform: scale(0.9); */
+    height: 270px !important;
+    width: 490px !important;
   }
 
 main .box-item-content-2 {
@@ -251,7 +258,8 @@ main .box-item-content-2 {
 }
 
 main .graph {
-    height: 200px;
+    /* height: 200px; */
+    transform: scale(1.0);
 }
 
 main .box-item-content-3 {
