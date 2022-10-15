@@ -9,8 +9,8 @@ setInterval(async () => {
 
     console.log('Mercado');
     const mercado = await api.depth('BNBBUSD');
-    console.log(mercado.bids.length ? `Compra (Maior bids): ${mercado.bids[0][0]}` : 'Sem Compras'); //Maior pre�o de compras
-    console.log(mercado.asks.length ? `Venda (Menor asks): ${mercado.asks[0][0]}` : 'Sem Vendas'); //Menor pre�o de vendas
+    console.log(mercado.bids.length ? `Compra (Maior bids): ${mercado.bids[0][0]}` : 'Sem Compras'); //Bid = Pessoal que quer comprar (Ver o Bid/preço mais alto)
+    console.log(mercado.asks.length ? `Venda (Menor asks): ${mercado.asks[0][0]}` : 'Sem Vendas'); //Ask = Pessoal que quer vender (Ver o Ask/preço mais baixo)
 
     mercado.bids ? buy = parseFloat(mercado.bids[0][0]) : buy = 0;
     mercado.asks ? sellPrice = parseFloat(mercado.asks[0][0]) : asks = 0;

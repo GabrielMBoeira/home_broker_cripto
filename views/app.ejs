@@ -106,97 +106,27 @@
                         </div>
                      </div>
                      <div class="buttons-graph">
+                        <div>Buy <span id="buy"></span></div>
+                        <div>Sell <span id="sell"></span></div>
                         <button class="btn btn-sm btn-success btn-graph">Comprar</button>
                         <button class="btn btn-sm btn-danger btn-graph">Vender</button>
                      </div>
                   </div>
                   <div class="col-lg-5 box-item">
                      <div class="box-item-content-2">
+                        <div>Carteira</div>
                         <div class="card">
                            <div class="card-body table-responsive p-0">
                               <table class="table table-striped table-valign-middle">
                                  <thead>
                                     <tr>
-                                       <th>Product</th>
-                                       <th>Price</th>
-                                       <th>Sales</th>
-                                       <th>More</th>
+                                       <th>Moeda</th>
+                                       <th>Valor Free</th>
+                                       <th>Valor Total</th>
+                                       <th>Resultado</th>
                                     </tr>
                                  </thead>
-                                 <tbody>
-                                    <tr>
-                                       <td>
-                                          Some Product
-                                       </td>
-                                       <td>$13 USD</td>
-                                       <td>
-                                          <small class="text-success mr-1">
-                                             <i class="fas fa-arrow-up"></i>
-                                             12%
-                                          </small>
-                                          12,000 Sold
-                                       </td>
-                                       <td>
-                                          <a href="#" class="text-muted">
-                                             <i class="fas fa-search"></i>
-                                          </a>
-                                       </td>
-                                    </tr>
-                                    <tr>
-                                       <td>
-                                          Another Product
-                                       </td>
-                                       <td>$29 USD</td>
-                                       <td>
-                                          <small class="text-warning mr-1">
-                                             <i class="fas fa-arrow-down"></i>
-                                             0.5%
-                                          </small>
-                                          123,234 Sold
-                                       </td>
-                                       <td>
-                                          <a href="#" class="text-muted">
-                                             <i class="fas fa-search"></i>
-                                          </a>
-                                       </td>
-                                    </tr>
-                                    <tr>
-                                       <td>
-                                          Amazing Product
-                                       </td>
-                                       <td>$1,230 USD</td>
-                                       <td>
-                                          <small class="text-danger mr-1">
-                                             <i class="fas fa-arrow-down"></i>
-                                             3%
-                                          </small>
-                                          198 Sold
-                                       </td>
-                                       <td>
-                                          <a href="#" class="text-muted">
-                                             <i class="fas fa-search"></i>
-                                          </a>
-                                       </td>
-                                    </tr>
-                                    <tr>
-                                       <td>
-                                          Perfect Item
-                                          <span class="badge bg-danger">NEW</span>
-                                       </td>
-                                       <td>$199 USD</td>
-                                       <td>
-                                          <small class="text-success mr-1">
-                                             <i class="fas fa-arrow-up"></i>
-                                             63%
-                                          </small>
-                                          87 Sold
-                                       </td>
-                                       <td>
-                                          <a href="#" class="text-muted">
-                                             <i class="fas fa-search"></i>
-                                          </a>
-                                       </td>
-                                    </tr>
+                                 <tbody id="tbody">
                                  </tbody>
                               </table>
                            </div>
@@ -404,7 +334,43 @@
       integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM"
       crossorigin="anonymous"></script>
 
+
    <script>
+
+      // showData(result)
+      const showData = (result) => {
+         let tbody = document.getElementById('tbody');
+         let buy = document.getElementById('buy');
+         let sell = document.getElementById('sell');
+
+         buy.innerHTML = result.buy;
+         sell.innerHTML = result.sell;
+
+         result.coins.forEach(element => {
+            let html = "<tr>";
+            html += "<td>" + element.asset + "</td>";
+            html += "<td>" + element.free + "</td>";
+            html += "<td>" + element.locked + "</td>";
+            html += "<td> - </td>";
+            html += "</tr>";
+
+            tbody.insertAdjacentHTML("afterend", html);
+         });
+      }
+
+      const options = {
+         method: 'GET',
+         mode: 'cors',
+         headers: {
+            "Content-type": "application/x-www-form-urlencoded; charset=UTF-8"
+         }
+      }
+
+      fetch("http://localhost:3000/data", options)
+         .then(resp => resp.json().then(data => showData(data)))
+         .catch(e => console.log(e.message))
+
+
       const btn = document.querySelector('#btn');
       const bxSearch = document.querySelector('.bx-search');
       const sidebar = document.querySelector('.sidebar');
@@ -475,7 +441,7 @@
       const data = {
          labels: labels,
          datasets: [{
-            label: 'My First dataset',
+            label: 'Cotações Mercado',
             backgroundColor: 'rgb(255, 99, 132)',
             borderColor: 'rgb(255, 99, 132)',
             data: [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 2000, -2000],
@@ -565,7 +531,7 @@
       setInterval(() => {
          updateData();
          myChart.update();
-      }, 1000)
+      }, 5000)
    </script>
 
 </body>
