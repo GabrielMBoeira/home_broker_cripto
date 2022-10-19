@@ -12,7 +12,7 @@ async function privateCall(path, data = {}, method = 'GET') {
         throw new Error('Preencha corretamente sua API KEY e SECRET KEY');
 
     const timestamp = Date.now();
-    const recvWindow = 60000;//m·ximo permitido, default 5000
+    const recvWindow = 60000;//m√°ximo permitido, default 5000
 
     const signature = crypto
         .createHmac('sha256', apiSecret)
