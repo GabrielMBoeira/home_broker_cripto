@@ -114,19 +114,34 @@
                   </div>
                   <div class="col-lg-5 box-item">
                      <div class="box-item-content-2">
-                        <div>Carteira</div>
+                        <div>
+                           <span>Total Carteira ($US): </span>
+                           <span id="total_wallet"></span>
+                        </div>
                         <div class="card">
                            <div class="card-body table-responsive p-0">
-                              <table class="table table-striped table-valign-middle">
+                              <table class="table table-striped table-valign-middle" id="table">
                                  <thead>
                                     <tr>
                                        <th>Moeda</th>
                                        <th>Valor Free</th>
-                                       <th>Valor Total</th>
+                                       <th>Valor US$</th>
                                        <th>Resultado</th>
                                     </tr>
                                  </thead>
                                  <tbody id="tbody">
+                                    <tr>
+                                       <td>BUSD</td>
+                                       <td id="busd_free"></td>
+                                       <td id="busd_val_unit">1</td>
+                                       <td id="busd_result"></td>
+                                    </tr>
+                                    <tr>
+                                       <td>BNB</td>
+                                       <td id="bnb_free"></td>
+                                       <td id="bnb_val_unit"></td>
+                                       <td id="bnb_result"></td>
+                                    </tr>
                                  </tbody>
                               </table>
                            </div>
@@ -364,7 +379,7 @@
             fetch("http://localhost:3000/buy", options)
                .then(resp => resp.json().then(data => console.log(data)))
                .catch(e => console.log(e.message))
-         } 
+         }
       }
 
       function sell() {
@@ -377,7 +392,7 @@
                   "Content-type": "application/x-www-form-urlencoded; charset=UTF-8"
                }
             }
-   
+
             fetch("http://localhost:3000/sell", options)
                .then(resp => resp.json().then(data => console.log(data)))
                .catch(e => console.log(e.message))
@@ -385,23 +400,36 @@
       }
 
       const showData = (result) => {
-         let tbody = document.getElementById('tbody');
          let buy = document.getElementById('buy');
          let sell = document.getElementById('sell');
 
          buy.innerHTML = parseFloat(result.buy).toFixed(2);
          sell.innerHTML = parseFloat(result.sell).toFixed(2);
 
-         result.coins.forEach(element => {
-            let html = "<tr>";
-            html += "<td>" + element.asset + "</td>";
-            html += "<td>" + parseFloat(element.free).toFixed(2) + "</td>";
-            html += "<td>" + parseFloat(element.locked).toFixed(2) + "</td>";
-            html += "<td> - </td>";
-            html += "</tr>";
+         let bnb_free = document.getElementById('bnb_free');
+         let busd_free = document.getElementById('busd_free');
+         
+         bnb_free.innerHTML = parseFloat(result.coins[0].free).toFixed(2);
+         busd_free.innerHTML = parseFloat(result.coins[1].free).toFixed(2);
+         
+         let bnb_val_unit = document.getElementById('bnb_val_unit');
+         bnb_val_unit.innerHTML = parseFloat(result.sell).toFixed(2);
 
-            tbody.insertAdjacentHTML("afterend", html);
-         });
+
+         //Calculos tabela  = Resultado
+         let undBUSD = 1;
+         let undBNB = result.sell;
+         let bnbRes = parseFloat(undBNB * result.coins[0].free).toFixed(2);
+         let busdRes = undBUSD * parseFloat(result.coins[1].free).toFixed(2);
+
+         bnb_result.innerHTML = bnbRes;
+         busd_result.innerHTML = busdRes;
+
+         //Total Wallet
+         let total_wallet = document.getElementById('total_wallet');
+         let sumWallet = parseFloat(busdRes) + parseFloat(bnbRes);
+         total_wallet.innerHTML = parseFloat(sumWallet).toFixed(2);
+
       }
 
       const options = {
@@ -412,9 +440,11 @@
          }
       }
 
-      fetch("http://localhost:3000/data", options)
-         .then(resp => resp.json().then(data => showData(data)))
-         .catch(e => console.log(e.message))
+      setInterval(() => {
+         fetch("http://localhost:3000/data", options)
+            .then(resp => resp.json().then(data => showData(data)))
+            .catch(e => console.log(e.message))
+      }, 3000)
 
       //ChartJS
       const labels = [
@@ -514,6 +544,15 @@
 
          //Quantidades de parâmetros no gráfico (50)
          for (let i = 0; i < 50; i++) {
+
+            // console.log(valSell + '-'+i)
+            // console.log(myChart.data.datasets[0].data[i] + '-'+i)
+            // console.log(myChart.data.datasets[0].data[i + 1] + '-'+i)
+            // console.log('----')
+
+            // console.log(myChart.data.datasets[0].data[58])
+            // console.log(myChart.data.datasets[0].data[58 + 1])
+            
             myChart.data.datasets[0].data[i] = myChart.data.datasets[0].data[i + 1]
 
             if (i === 49) {
@@ -525,7 +564,7 @@
       setInterval(() => {
          updateData();
          myChart.update();
-      }, 2000)
+      }, 3000)
    </script>
 
 </body>

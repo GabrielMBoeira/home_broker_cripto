@@ -125,6 +125,8 @@ app.use('/buy', async (req, res) => {
     const buyOrder = await api.newOrder(symbol, 1);
     data.buyOrder = buyOrder;
 
+    console.log(data.buyOrder);
+
     res.json(data.buyOrder);
 
 })
